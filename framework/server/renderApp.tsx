@@ -7,7 +7,7 @@ const renderApp = async (
   loadDataInServer: boolean,
 ): Promise<[string, string?]> => {
   // If the App has provided a preLoadServerData, call it, then acquire the cache to send to the browser
-  let initialData;
+  let initialData: string | undefined;
   if (loadDataInServer && typeof App.preLoadServerData === 'function') {
     await App.preLoadServerData();
     initialData = serializeCache();
