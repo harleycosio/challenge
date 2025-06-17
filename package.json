@@ -4,15 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-			"build": "npm run build:server && npm run build:client",
-			"build:server": "rm -rf dist && mkdir dist && cp ./framework/mock-server/mockServiceWorker.js dist/ && esbuild ./framework/server/index.js --bundle --minify --platform=node --outfile=dist/server.js",
-			"build:client": "esbuild ./framework/client/index.js --bundle --minify --platform=browser --outfile=dist/client.js",
-			"lint": "biome lint --fix",
-			"start": "npm run build && node dist/server.js",
-			"test": "jest",
-			"test:watch": "jest --watch",
-			"prepare": "husky"
-		},
+    "build": "npm run build:server && npm run build:client",
+    "build:server": "rm -rf dist && mkdir dist && cp ./framework/mock-server/mockServiceWorker.js dist/ && esbuild ./framework/server/index.js --bundle --minify --platform=node --outfile=dist/server.js",
+    "build:client": "esbuild ./framework/client/index.js --bundle --minify --platform=browser --outfile=dist/client.js",
+    "lint": "biome lint --fix",
+    "start": "npm run build && node dist/server.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "prepare": "husky"
+  },
   "author": "",
   "license": "ISC",
   "devDependencies": {

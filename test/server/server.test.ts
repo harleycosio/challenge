@@ -1,5 +1,8 @@
-import request from 'supertest';
-import { fastify } from '../../framework/server';
+const request = require('supertest');
+import Fastify from 'fastify';
+
+const fastify = Fastify();
+
 
 beforeAll(async () => {
   await fastify.ready();
@@ -10,7 +13,7 @@ afterAll(async () => {
 });
 
 test('GET /appWithoutSSRData should return a list of users', async () => {
-  const response = await request(fastify.server).get('/appWithoutSSRData');
+    const response = await request(fastify.server).get('/appWithoutSSRData')
 
   expect(response.status).toBe(200);
   expect(response.headers['content-type']).toMatch(/html/);
@@ -18,7 +21,7 @@ test('GET /appWithoutSSRData should return a list of users', async () => {
 });
 
 test('GET /appWithSSRData should return a list of users', async () => {
-  const response = await request(fastify.server).get('/appWithSSRData');
+  const response = await request(fastify.server).get('/appWithSSRData')
 
   expect(response.status).toBe(200);
   expect(response.headers['content-type']).toMatch(/html/);

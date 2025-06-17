@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { type FC } from 'react';
 import { useCachingFetch } from '../caching-fetch-library/cachingFetch';
 import { validateData } from './validation';
 import Name from './Name';
