@@ -6,15 +6,6 @@ const fastify = Fastify({
   logger: true, // Enable logger during tests for cleaner output
 });
 
-// Add your routes here (this should be moved to a separate file in a real app)
-fastify.get('/appWithoutSSRData', async (request, reply) => {
-  reply.type('text/html').send('<html><body>Welcome to the People Directory</body></html>');
-});
-
-fastify.get('/appWithSSRData', async (request, reply) => {
-  reply.type('text/html').send('<html><body>Welcome to the People Directory</body></html>');
-});
-
 // Test setup
 beforeAll(async () => {
   try {
