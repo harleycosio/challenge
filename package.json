@@ -1,47 +1,57 @@
 {
-  "name": "challenge",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "build": "npm run build:server && npm run build:client",
-    "build:server": "rm -rf dist && mkdir dist && cp ./framework/mock-server/mockServiceWorker.js dist/ && esbuild ./framework/server/index.js --bundle --minify --platform=node --outfile=dist/server.js",
-    "build:client": "esbuild ./framework/client/index.js --bundle --minify --platform=browser --outfile=dist/client.js",
-    "lint": "biome lint --fix",
-    "start": "npm run build && node dist/server.js",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "prepare": "husky"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@biomejs/biome": "1.9.4",
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.3.0",
-    "@types/jest": "^30.0.0",
-    "@types/node": "^20.12.12",
-    "@types/react": "^18.3.2",
-    "@types/react-dom": "^18.3.0",
-    "@types/supertest": "^6.0.3",
-    "esbuild": "^0.25.5",
-    "husky": "^9.1.7",
-    "jest": "^30.0.0",
-    "jest-environment-jsdom": "^30.0.0",
-    "supertest": "^7.1.1",
-    "ts-jest": "^29.4.0"
-  },
-  "dependencies": {
-    "axios": "^1.10.0",
-    "fastify": "^4.27.0",
-    "msw": "^2.3.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "valibot": "^0.30.0"
-  },
-  "msw": {
-    "workerDirectory": [
-      "mockServer"
-    ]
-  }
+	"name": "challenge",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"build": "npm run build:server && npm run build:client",
+		"build:server": "rm -rf dist && mkdir dist && cp ./framework/mock-server/mockServiceWorker.js dist/ && esbuild ./framework/server/index.js --bundle --minify --platform=node --outfile=dist/server.js",
+		"build:client": "esbuild ./framework/client/index.js --bundle --minify --platform=browser --outfile=dist/client.js",
+		"lint": "biome lint --fix",
+		"start": "npm run build && node dist/server.js",
+		"test": "jest",
+		"test:watch": "jest --watch",
+		"prepare": "husky"
+	},
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@testing-library/jest-dom": "^6.6.3",
+		"@testing-library/react": "^16.3.0",
+		"@types/jest": "^30.0.0",
+		"@types/node": "^20.12.12",
+		"@types/react": "^18.3.2",
+		"@types/react-dom": "^18.3.0",
+		"@types/supertest": "^6.0.3",
+		"esbuild": "^0.25.5",
+		"husky": "^9.1.7",
+		"jest": "^30.0.0",
+		"jest-environment-jsdom": "^30.0.0",
+		"lint-staged": "^16.1.2",
+		"supertest": "^7.1.1",
+		"ts-jest": "^29.4.0"
+	},
+	"dependencies": {
+		"axios": "^1.10.0",
+		"fastify": "^4.27.0",
+		"msw": "^2.3.0",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
+		"valibot": "^0.30.0"
+	},
+	"msw": {
+		"workerDirectory": ["mockServer"]
+	},
+	"lint-staged": {
+		"*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [
+			"biome check --files-ignore-unknown=true",
+			"biome check --write --no-errors-on-unmatched",
+			"biome check --write --organize-imports-enabled=false --no-errors-on-unmatched",
+			"biome check --write --unsafe --no-errors-on-unmatched",
+			"biome format --write --no-errors-on-unmatched",
+			"biome lint --write --no-errors-on-unmatched"
+		],
+		"*": ["biome check --no-errors-on-unmatched --files-ignore-unknown=true"]
+	}
 }
